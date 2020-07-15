@@ -51,12 +51,13 @@ Route::get('/user/{id}', function (Request $request) {
 
 The middleware will search for a matching Model referencing the key passed on path, query string or parameter bag.
 
-Eg.: http://yourdomain.com/api/v1/user/1 will search for User.php (instance of Eloquent ORM Model) that exists on your database with id `1`. See [Configuration](#configuration) for more details.
+Eg.: http://yourdomain.com/api/v1/user/1 will search for User.php (instance of Eloquent ORM Model) that exists on your database with id `1`. 
+See [Configuration](#configuration) for more details.
 
-It also supports hyphen and underscore separated entities. Eg.: http://yourdomain.com/api/v1/user-role/1
+It also supports hyphen and underscore separated names. Eg.: http://yourdomain.com/api/v1/user-role/1 => UserRole.php
 
 ### Relationships 
-By default, the middleware is set to bring all existent relationships from Model. However, you need to create a scope in your model:
+By default, the middleware is set to bring all existent relationships from Model. However, you need to create a `withAll` scope in your model:
 ```php
 public function scopeWithAll($query)
 {
@@ -64,7 +65,7 @@ public function scopeWithAll($query)
 }
 ```
 
-If you don't want do bring any relationships from your Model, you can add a middleware parameter in your route to disable it:
+If you don't want to bring any relationships from your Model, you can add a middleware parameter in your route to disable it:
 ```php
 Route::get('/user/{id}', function (Request $request) {
     // ...
@@ -82,9 +83,9 @@ php artisan vendor:publish --tag="datamapping"
 
 | Option                   | Description                                                                          | Default value |
 |--------------------------|--------------------------------------------------------------------------------------|---------------|
-| entity_directory         | Default model directory of your project, eg. `'Packages'`.                           | `string`      |
+| entity_directory         | Default path to model directory of your project, eg. `app_path('Packages')`.         | `string`      |
 | primary_key_type         | Default primary key type of your database tables, eg. `'integer'` or `'uuid'`.       | `string`      |
-| api_version              | Main version of your REST API, eg. `'v1'`.                                             | `string`      |
+| api_version              | Main version of your REST API, eg. `'v1'`.                                           | `string`      |
 
 ## Testing
 

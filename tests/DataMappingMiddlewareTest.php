@@ -3,7 +3,7 @@
 namespace Agilize\LaravelDataMapper\Tests;
 
 use Agilize\LaravelDataMapper\DataMappingMiddleware;
-use Agilize\LaravelDataMapper\Model\TestUser;
+use Agilize\LaravelDataMapper\Tests\Model\TestUser;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -110,7 +110,7 @@ class DataMappingTest extends TestCase
     public function testItShouldNotDataMapPassingIdentityOnPathThroughGetMethod()
     {
         $middleware = new DataMappingMiddleware([
-            'entityDirectory' => 'Model',
+            'entityDirectory' => __DIR__ . '/Model',
             'primaryKeyType' => 'integer',
             'apiVersion' => 'v1',
         ]);

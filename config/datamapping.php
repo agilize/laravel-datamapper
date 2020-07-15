@@ -6,11 +6,11 @@ return [
     | Default Entity Directory
     |--------------------------------------------------------------------------
     |
-    | This value is the default directory where entities must be searched.
-    | Depending on development design you follow on your project
-    | (DDD, MVC, etc), entities will be placed on different directories.
+    | This value is the default path to a directory where all Models must be
+    | searched. Depending on development design you follow on your project
+    | (DDD, MVC, etc), Models will be placed on different directories.
     */
-    'entity_directory' => 'Packages',
+    'entity_directory' => app_path('Packages'),
 
     /*
     |--------------------------------------------------------------------------

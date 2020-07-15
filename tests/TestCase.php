@@ -15,7 +15,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
         parent::resolveApplicationConfiguration($app);
 
         $app['config']['datamapping'] = [
-            'entity_directory' => 'Model',
+            'entity_directory' => __DIR__ . '/Model',
             'primary_key_type' => 'integer',
             'api_version' => 'v1',
         ];

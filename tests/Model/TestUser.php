@@ -1,6 +1,6 @@
 <?php
 
-namespace Agilize\LaravelDataMapper\Model;
+namespace Agilize\LaravelDataMapper\Tests\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
