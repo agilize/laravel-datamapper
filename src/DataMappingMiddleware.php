@@ -135,9 +135,10 @@ class DataMappingMiddleware
      */
     private function mapObjectFromParams(ParameterBag $bag)
     {
-        $result = null;
         $fileList = $this->getFileListFromPackages();
+
         foreach ($this->params as $term => $value) {
+            $result = null;
             $domainName = StringHelper::transformWithHyphenOrUnderScoreToCapitalized($term);
             $fileName = $domainName . '.php';
             if (array_key_exists($fileName, $fileList)) {

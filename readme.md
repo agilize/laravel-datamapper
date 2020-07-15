@@ -40,11 +40,36 @@ protected $routeMiddleware = [
     // ...
 ];
 ```
+
+and add it in your routes:
+
+```php
+Route::get('/user/{id}', function (Request $request) {
+    // ...
+})->middleware('datamapping');
+```
+
 The middleware will search for a matching Model referencing the key passed on path, query string or parameter bag.
 
 Eg.: http://yourdomain.com/api/v1/user/1 will search for User.php (instance of Eloquent ORM Model) that exists on your database with id `1`. See [Configuration](#configuration) for more details.
 
-It also supports hyphen and underscore separated entities. Eg.: http://yourdomain.com/api/v1/user-role/1 
+It also supports hyphen and underscore separated entities. Eg.: http://yourdomain.com/api/v1/user-role/1
+
+### Relationships 
+By default, the middleware is set to bring all existent relationships from Model. However, you need to create a scope in your model:
+```php
+public function scopeWithAll($query)
+{
+    $query->with('relation1', 'relation2');
+}
+```
+
+If you don't want do bring any relationships from your Model, you can add a middleware parameter in your route to disable it:
+```php
+Route::get('/user/{id}', function (Request $request) {
+    // ...
+})->middleware('datamapping:no-relations');
+```
 
 ## Configuration
 
